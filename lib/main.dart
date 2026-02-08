@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../pages/splash.dart';
+import '../pages/about.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,12 +9,19 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: Center(child: Text('Malfa App'))),
+
+        initialRoute: '/splash',
+
+      routes: {
+        '/splash' : (context) => const SplashScreen(),
+        '/about': (context) => const AboutUsPage(),
+
+      },
     );
   }
 }
+
