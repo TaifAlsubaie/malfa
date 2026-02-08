@@ -60,6 +60,9 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/regions/
+    - assets/images/regions/malfa-logo.png
+    - assets/images/regions/Founding-day-logo.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
