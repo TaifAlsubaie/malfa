@@ -13,7 +13,7 @@ class MainLayout extends StatefulWidget {
 class _MainLayoutState extends State<MainLayout> {
   int currentIndex = 0;
 
-  final pages = [RegionsPage() /*KingsPage(), AboutPage()*/];
+  final pages = [RegionsPage(), /*KingsPage(), AboutUsPage()*/];
 
   @override
   Widget build(BuildContext context) {
