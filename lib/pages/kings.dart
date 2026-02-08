@@ -74,7 +74,7 @@ class KingsPage extends StatelessWidget {
                 "الملوك والخلفاء اللاحقون: واصلوا توسيع الدولة حتى سقوطها عام 1818م ",
               ],
               false,
-              "assets/images/king1.jpg",
+              "assets/images/kings/king1.jpg",
             ),
 
             // ===================== الدولة السعودية الثانية =====================
@@ -85,7 +85,7 @@ class KingsPage extends StatelessWidget {
                 "الإمام عبد الله بن سعود: استمر في قيادة الدولة حتى نهاية الدولة الثانية ",
               ],
               true,
-              "assets/images/king2.jpg",
+              "assets/images/kings/king2.jpg",
             ),
 
             // ===================== الدولة السعودية الحديثة =====================
@@ -95,7 +95,7 @@ class KingsPage extends StatelessWidget {
                 "أسسها الملك عبد العزيز بن عبد الرحمن آل سعود، موحداً المناطق تحت راية واحدة، وبدأ مسيرة البناء والتنمية التي استمر عليها الخلفاء من بعده، ليقودوا المملكة نحو التطور والاستقرار والنهضة الحديثة ",
               ],
               false,
-              "assets/images/king3.jpg",
+              "assets/images/kings/king3.jpg",
             ),
 
             // ===================== الملك سعود =====================
@@ -106,7 +106,7 @@ class KingsPage extends StatelessWidget {
                 "واجه تحديات اقتصادية وإدارية أدت إلى تنحيه عن الحكم عام 1964 ",
               ],
               true,
-              "assets/images/king4.jpg",
+              "assets/images/kings/king4.jpg",
             ),
 
             // ===================== الملك فيصل =====================
@@ -117,7 +117,7 @@ class KingsPage extends StatelessWidget {
                 "تم اغتياله في عام 1975 أثناء حكمه ",
               ],
               false,
-              "assets/images/king5.jpg",
+              "assets/images/kings/king5.jpg",
             ),
 
             // ===================== الملك خالد =====================
@@ -128,7 +128,7 @@ class KingsPage extends StatelessWidget {
                 "شهدت المملكة في عهده تطورًا اقتصاديًا كبيرًا بسبب ارتفاع أسعار النفط ",
               ],
               true,
-              "assets/images/king6.jpg",
+              "assets/images/kings/king6.jpg",
             ),
 
             // ===================== الملك فهد =====================
@@ -139,7 +139,7 @@ class KingsPage extends StatelessWidget {
                 "أطلق مبادرات التعليم والصحة بشكل واسع، وحافظ على دور المملكة الإقليمي والدولي ",
               ],
               false,
-              "assets/images/king7.jpg",
+              "assets/images/kings/king7.jpg",
             ),
 
             // ===================== الملك عبد الله =====================
@@ -150,7 +150,7 @@ class KingsPage extends StatelessWidget {
                 "أطلق مشاريع ضخمة للبنية التحتية، مثل المدن الصناعية والمطارات والطرق ",
               ],
               true,
-              "assets/images/king8.jpg",
+              "assets/images/kings/king8.jpg",
             ),
 
             // ===================== الملك سلمان =====================
@@ -161,7 +161,7 @@ class KingsPage extends StatelessWidget {
                 "ركز على الابتكار والتكنولوجيا وتنمية القطاعات غير النفطية ",
               ],
               false,
-              "assets/images/king9.jpg",
+              "assets/images/kings/king9.jpg",
             ),
 
             const SizedBox(height: 20),
@@ -285,4 +285,5 @@ class KingsPage extends StatelessWidget {
     );
   }
 }
+
 
