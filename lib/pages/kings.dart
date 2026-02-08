@@ -182,7 +182,7 @@ class KingsPage extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: const Color(0xFFC49E61), // تم تعديل اللون هنا
+        color: const Color(0xFFC49E61), 
         borderRadius: BorderRadius.circular(25),
       ),
       child: Row(
@@ -285,3 +285,4 @@ class KingsPage extends StatelessWidget {
     );
   }
 }
+
