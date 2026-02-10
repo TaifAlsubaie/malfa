@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pages/regions.dart';
-//import '../pages/kings.dart';
-//import '../pages/about.dart';
+import '../pages/kings.dart';
+import '../pages/about.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -13,7 +13,7 @@ class MainLayout extends StatefulWidget {
 class _MainLayoutState extends State<MainLayout> {
   int currentIndex = 0;
 
-  final pages = [RegionsPage(), /*KingsPage(), AboutUsPage()*/];
+  final pages = [RegionsPage(), KingsPage() , AboutUsPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,7 @@ class _MainLayoutState extends State<MainLayout> {
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        onTap: (_) {},
-        //onTap: (i) => setState(() => currentIndex = i),
+        onTap: (i) => setState(() => currentIndex = i),
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xFF846043),
         unselectedItemColor: Colors.grey,

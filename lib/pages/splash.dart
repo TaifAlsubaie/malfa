@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:malfa/pages/about.dart';
+import 'package:malfa/layout/main_layout.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -69,7 +69,7 @@ class SplashScreen extends StatelessWidget {
                      Navigator.pushReplacement(
                        context,
                     MaterialPageRoute(
-                       builder: (context) => const AboutUsPage(),
+                       builder: (context) => const MainLayout(),
                     ),
                       );
                       },

@@ -10,19 +10,19 @@ class AboutUsPage extends StatelessWidget {
   static const double elementSpace = 24;
 
   final List<String> names = const [
-    'الطالبة الأولى',
-    'الطالبة الثانية',
-    'الطالبة الثالثة',
-    'الطالبة الرابعة',
+    ' رهام سعد العتيبي',
+    'طيف ماجد السبيعي ',
+    'ندى مسلم السبيعي ',
+    'ريما سلطان السبيعي ',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9F9F9), 
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
 
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 104, 94, 39),
+        backgroundColor: const Color(0xFF846043),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -48,11 +48,11 @@ class AboutUsPage extends StatelessWidget {
 
           Text(
             'فريق العمل',
-              textAlign: TextAlign.center,
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w600,
-              color: const Color.fromARGB(255, 77, 68, 28),
+              color: const Color.fromARGB(255, 0, 0, 0),
             ),
           ),
 
@@ -60,10 +60,7 @@ class AboutUsPage extends StatelessWidget {
 
           ...List.generate(
             names.length,
-            (index) => NameTile(
-              name: names[index],
-              index: index,
-            ),
+            (index) => NameTile(name: names[index], index: index),
           ),
         ],
       ),
@@ -94,22 +91,14 @@ class AboutUsPage extends StatelessWidget {
         'في مجال برمجة التطبيقات.',
         textAlign: TextAlign.right,
         textDirection: TextDirection.rtl,
-        style: TextStyle(
-          fontSize: 17,
-          height: 1.8,
-          color: Colors.black,
-        ),
+        style: TextStyle(fontSize: 17, height: 1.8, color: Colors.black),
       ),
     );
   }
 }
 
 class NameTile extends StatelessWidget {
-  const NameTile({
-    super.key,
-    required this.name,
-    required this.index,
-  });
+  const NameTile({super.key, required this.name, required this.index});
 
   final String name;
   final int index;
@@ -144,11 +133,11 @@ class NameTile extends StatelessWidget {
           ],
         ),
         child: Row(
-          textDirection: TextDirection.rtl, 
+          textDirection: TextDirection.rtl,
           children: [
             const CircleAvatar(
               radius: 16,
-              backgroundColor: Color.fromARGB(255, 204, 187, 133),
+              backgroundColor: const Color(0xFFC49E61),
               child: Icon(Icons.person, size: 18, color: Colors.black54),
             ),
             const SizedBox(width: 14),
