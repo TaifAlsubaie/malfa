@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'details.dart';
+import 'details.dart';
 
 class RegionsPage extends StatefulWidget {
   @override
@@ -8,26 +8,31 @@ class RegionsPage extends StatefulWidget {
 
 final List<Map<String, String>> regions = [
   {
+    "key": "الوسطى",
     "name": "المنطقة الوسطى",
     "image": "assets/images/regions/Central.png",
     "desc": "قلب المملكة · تاريخ وحضارة",
   },
   {
+    "key": "الشمالية",
     "name": "المنطقة الشمالية",
     "image": "assets/images/regions/Northern.png",
     "desc": "إرث قديم · بوابة الشمال",
   },
   {
+    "key": "الشرقية",
     "name": "المنطقة الشرقية",
     "image": "assets/images/regions/Eastern.png",
     "desc": "ساحل · اقتصاد · تنوع",
   },
   {
+    "key": "الغربية",
     "name": "المنطقة الغربية",
     "image": "assets/images/regions/Western.png",
     "desc": "تاريخ · حرمين · ثقافة",
   },
   {
+    "key": "الجنوبية",
     "name": "المنطقة الجنوبية",
     "image": "assets/images/regions/Southern.png",
     "desc": "طبيعة · تراث · جبال",
@@ -105,15 +110,16 @@ class _RegionsPageState extends State<RegionsPage> {
 
                       return InkWell(
                         borderRadius: BorderRadius.circular(12),
-                        /* onTap: () {
+                        onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RegionDetailsPage(),
+                              builder: (context) =>
+                                  DetailsPage(regionName: region['key']!),
                             ),
-                          )
+                          );
                         },
-*/
+
                         child: Container(
                           decoration: BoxDecoration(
                             color: const Color(0xFF846043),
