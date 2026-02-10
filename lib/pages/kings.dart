@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:malfa/pages/regions.dart'; // تأكدي من المسار الصحيح
 import 'package:malfa/layout/main_layout.dart';
+
 void main() {
   runApp(const MySaudiRoot());
 }
@@ -28,7 +30,18 @@ class KingsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: const Icon(Icons.arrow_back_ios, color: Color(0xFF2D5A41)),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => const RegionsPage()),
+            );
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Color(0xFF2D5A41),
+          ),
+        ),
         title: const Text(
           'العودة',
           style: TextStyle(
@@ -66,7 +79,7 @@ class KingsPage extends StatelessWidget {
               ),
             ),
 
-            // ===================== الدولة السعودية الأولى =====================
+            // كل كروت الملوك كما في الكود الأصلي
             _buildKingCard(
               "الدولة السعودية الأولى (1744-1818م)",
               [
@@ -77,7 +90,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king1.jpg",
             ),
 
-            // ===================== الدولة السعودية الثانية =====================
             _buildKingCard(
               "الدولة السعودية الثانية (1824-1891م)",
               [
@@ -88,7 +100,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king2.jpg",
             ),
 
-            // ===================== الدولة السعودية الحديثة =====================
             _buildKingCard(
               "الدولة السعودية الحديثة (1932-حتى اليوم)",
               [
@@ -98,7 +109,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king3.jpg",
             ),
 
-            // ===================== الملك سعود =====================
             _buildKingCard(
               "الملك سعود بن عبد العزيز آل سعود (1953-1964م)",
               [
@@ -109,7 +119,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king4.jpg",
             ),
 
-            // ===================== الملك فيصل =====================
             _buildKingCard(
               "الملك فيصل بن عبد العزيز آل سعود (1964-1975م)",
               [
@@ -120,7 +129,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king5.jpg",
             ),
 
-            // ===================== الملك خالد =====================
             _buildKingCard(
               "الملك خالد بن عبد العزيز آل سعود (1975-1982م)",
               [
@@ -131,7 +139,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king6.jpg",
             ),
 
-            // ===================== الملك فهد =====================
             _buildKingCard(
               "الملك فهد بن عبد العزيز آل سعود (1982-2005م)",
               [
@@ -142,7 +149,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king7.jpg",
             ),
 
-            // ===================== الملك عبد الله =====================
             _buildKingCard(
               "الملك عبد الله بن عبد العزيز آل سعود (2005-2015م)",
               [
@@ -153,7 +159,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king8.jpg",
             ),
 
-            // ===================== الملك سلمان =====================
             _buildKingCard(
               "الملك سلمان بن عبد العزيز آل سعود (2015-حتى اليوم)",
               [
@@ -285,6 +290,3 @@ class KingsPage extends StatelessWidget {
     );
   }
 }
-
-
-
