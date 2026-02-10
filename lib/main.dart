@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/kings.dart';
+import '../pages/splash.dart';
+import '../layout/main_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,9 +9,17 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: KingsPage());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      initialRoute: '/splash',
+
+      routes: {
+        '/splash': (context) => const SplashScreen(),
+        '/main': (context) => const MainLayout(),
+      },
+    );
   }
 }

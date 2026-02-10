@@ -168,7 +168,6 @@ class KingsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNav(),
     );
   }
 
@@ -266,22 +265,6 @@ class KingsPage extends StatelessWidget {
               const Icon(Icons.person, color: Colors.white, size: 50),
         ),
       ),
-    );
-  }
-
-  Widget _buildBottomNav() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: const Color(0xFFC49E61),
-      unselectedItemColor: Colors.grey,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.menu), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.grid_view), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      ],
     );
   }
 }
