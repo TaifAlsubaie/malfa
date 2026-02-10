@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:malfa/pages/regions.dart'; // تأكدي من المسار الصحيح
+import 'package:malfa/pages/regions.dart';    
 import 'package:malfa/layout/main_layout.dart';
 
 void main() {
@@ -290,3 +290,4 @@ class KingsPage extends StatelessWidget {
     );
   }
 }
+
