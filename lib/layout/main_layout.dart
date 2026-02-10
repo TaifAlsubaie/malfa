@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/regions.dart';
-//import '../pages/kings.dart';
+import '../pages/kings.dart';
 //import '../pages/about.dart';
 
 class MainLayout extends StatefulWidget {
@@ -13,7 +13,7 @@ class MainLayout extends StatefulWidget {
 class _MainLayoutState extends State<MainLayout> {
   int currentIndex = 0;
 
-  final pages = [RegionsPage(), /*KingsPage(), AboutUsPage()*/];
+  final pages = [RegionsPage(), KingsPage() /*, AboutUsPage()*/];
 
   @override
   Widget build(BuildContext context) {
