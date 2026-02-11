@@ -31,13 +31,24 @@ class KingsPage extends StatelessWidget {
         elevation: 0,
         leading: GestureDetector(
           onTap: () {
-            Navigator.pushAndRemoveUntil(
+
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => const RegionsPage()),
+            );
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Color(0xFF2D5A41),
+          ),
+           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (_) => const MainLayout()),
               (route) => false,
             );
           },
           child: const Icon(Icons.arrow_back_ios, color: Color(0xFF2D5A41)),
+
         ),
         title: const Text(
           'العودة',
@@ -270,3 +281,4 @@ class KingsPage extends StatelessWidget {
     );
   }
 }
+
