@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 // كلاس لتنظيم بيانات المناطق
@@ -301,4 +300,3 @@ class DetailsPage extends StatelessWidget {
     );
   }
 }
-
