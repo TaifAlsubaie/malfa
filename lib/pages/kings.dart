@@ -10,11 +10,14 @@ class MySaudiRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      locale: Locale('ar', 'SA'),
-      supportedLocales: [Locale('ar', 'SA')],
-      home: KingsPage(),
+      theme: ThemeData(
+        fontFamily: 'Cairo', // تعيين الخط الافتراضي للتطبيق
+      ),
+      locale: const Locale('ar', 'SA'),
+      supportedLocales: const [Locale('ar', 'SA')],
+      home: const KingsPage(),
     );
   }
 }
@@ -29,35 +32,26 @@ class KingsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: GestureDetector(
-          onTap: () {
-
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (_) => const RegionsPage()),
-            );
-          },
-          child: const Icon(
-            Icons.arrow_back_ios,
-            color: Color(0xFF2D5A41),
-          ),
-           Navigator.pushAndRemoveUntil(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF2D5A41)),
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (_) => const MainLayout()),
               (route) => false,
             );
           },
-          child: const Icon(Icons.arrow_back_ios, color: Color(0xFF2D5A41)),
-
         ),
         title: const Text(
           'العودة',
           style: TextStyle(
             color: Color(0xFF2D5A41),
             fontWeight: FontWeight.bold,
+            fontFamily: 'Cairo',
           ),
         ),
       ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -71,6 +65,7 @@ class KingsPage extends StatelessWidget {
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF8B6D45),
+                  fontFamily: 'Cairo',
                 ),
               ),
             ),
@@ -83,11 +78,11 @@ class KingsPage extends StatelessWidget {
                   color: Color.fromARGB(255, 5, 58, 13),
                   height: 1.5,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Cairo',
                 ),
               ),
             ),
 
-            // كل كروت الملوك كما في الكود الأصلي
             _buildKingCard(
               "الدولة السعودية الأولى (1744-1818م)",
               [
@@ -214,6 +209,7 @@ class KingsPage extends StatelessWidget {
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
+                      fontFamily: 'Cairo',
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -235,6 +231,7 @@ class KingsPage extends StatelessWidget {
                                     fontSize: 12.5,
                                     height: 1.4,
                                     fontWeight: FontWeight.bold,
+                                    fontFamily: 'Cairo',
                                   ),
                                 ),
                               ),
@@ -281,4 +278,3 @@ class KingsPage extends StatelessWidget {
     );
   }
 }
-
