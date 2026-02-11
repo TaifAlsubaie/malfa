@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:malfa/pages/regions.dart';    
 import 'package:malfa/layout/main_layout.dart';
 
 void main() {
@@ -32,6 +31,7 @@ class KingsPage extends StatelessWidget {
         elevation: 0,
         leading: GestureDetector(
           onTap: () {
+
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (_) => const RegionsPage()),
@@ -41,6 +41,14 @@ class KingsPage extends StatelessWidget {
             Icons.arrow_back_ios,
             color: Color(0xFF2D5A41),
           ),
+           Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => const MainLayout()),
+              (route) => false,
+            );
+          },
+          child: const Icon(Icons.arrow_back_ios, color: Color(0xFF2D5A41)),
+
         ),
         title: const Text(
           'العودة',
@@ -173,7 +181,6 @@ class KingsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNav(),
     );
   }
 
@@ -187,7 +194,7 @@ class KingsPage extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: const Color(0xFFC49E61), 
+        color: const Color(0xFFC49E61),
         borderRadius: BorderRadius.circular(25),
       ),
       child: Row(
@@ -271,22 +278,6 @@ class KingsPage extends StatelessWidget {
               const Icon(Icons.person, color: Colors.white, size: 50),
         ),
       ),
-    );
-  }
-
-  Widget _buildBottomNav() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: const Color(0xFFC49E61),
-      unselectedItemColor: Colors.grey,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.menu), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.grid_view), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      ],
     );
   }
 }
