@@ -48,7 +48,7 @@ class SplashScreen extends StatelessWidget {
                       ' يُفال " فلان ملفى العرب " أي وجهتهم ومكان اجتماعهم \n'
                       ' وتطبيقنا هنا ملفى لكم ، يجمع المناطق التاريخية \n'
                       'ويقربكم من جذوركم ، ليكون وجهتكم لمعرفة تاريخ الدولة'
-                      'السعودبة منذ التأسيس',
+                      'السعودية منذ التأسيس ',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
