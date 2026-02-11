@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:malfa/layout/main_layout.dart';
 
 void main() {
   runApp(const MySaudiRoot());
@@ -9,11 +10,14 @@ class MySaudiRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      locale: Locale('ar', 'SA'),
-      supportedLocales: [Locale('ar', 'SA')],
-      home: KingsPage(),
+      theme: ThemeData(
+        fontFamily: 'Cairo', // تعيين الخط الافتراضي للتطبيق
+      ),
+      locale: const Locale('ar', 'SA'),
+      supportedLocales: const [Locale('ar', 'SA')],
+      home: const KingsPage(),
     );
   }
 }
@@ -28,15 +32,26 @@ class KingsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: const Icon(Icons.arrow_back_ios, color: Color(0xFF2D5A41)),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF2D5A41)),
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => const MainLayout()),
+              (route) => false,
+            );
+          },
+        ),
         title: const Text(
           'العودة',
           style: TextStyle(
             color: Color(0xFF2D5A41),
             fontWeight: FontWeight.bold,
+            fontFamily: 'Cairo',
           ),
         ),
       ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -50,6 +65,7 @@ class KingsPage extends StatelessWidget {
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF8B6D45),
+                  fontFamily: 'Cairo',
                 ),
               ),
             ),
@@ -62,11 +78,11 @@ class KingsPage extends StatelessWidget {
                   color: Color.fromARGB(255, 5, 58, 13),
                   height: 1.5,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Cairo',
                 ),
               ),
             ),
 
-            // ===================== الدولة السعودية الأولى =====================
             _buildKingCard(
               "الدولة السعودية الأولى (1744-1818م)",
               [
@@ -77,7 +93,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king1.jpg",
             ),
 
-            // ===================== الدولة السعودية الثانية =====================
             _buildKingCard(
               "الدولة السعودية الثانية (1824-1891م)",
               [
@@ -88,7 +103,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king2.jpg",
             ),
 
-            // ===================== الدولة السعودية الحديثة =====================
             _buildKingCard(
               "الدولة السعودية الحديثة (1932-حتى اليوم)",
               [
@@ -98,7 +112,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king3.jpg",
             ),
 
-            // ===================== الملك سعود =====================
             _buildKingCard(
               "الملك سعود بن عبد العزيز آل سعود (1953-1964م)",
               [
@@ -109,7 +122,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king4.jpg",
             ),
 
-            // ===================== الملك فيصل =====================
             _buildKingCard(
               "الملك فيصل بن عبد العزيز آل سعود (1964-1975م)",
               [
@@ -120,7 +132,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king5.jpg",
             ),
 
-            // ===================== الملك خالد =====================
             _buildKingCard(
               "الملك خالد بن عبد العزيز آل سعود (1975-1982م)",
               [
@@ -131,7 +142,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king6.jpg",
             ),
 
-            // ===================== الملك فهد =====================
             _buildKingCard(
               "الملك فهد بن عبد العزيز آل سعود (1982-2005م)",
               [
@@ -142,7 +152,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king7.jpg",
             ),
 
-            // ===================== الملك عبد الله =====================
             _buildKingCard(
               "الملك عبد الله بن عبد العزيز آل سعود (2005-2015م)",
               [
@@ -153,7 +162,6 @@ class KingsPage extends StatelessWidget {
               "assets/images/kings/king8.jpg",
             ),
 
-            // ===================== الملك سلمان =====================
             _buildKingCard(
               "الملك سلمان بن عبد العزيز آل سعود (2015-حتى اليوم)",
               [
@@ -168,7 +176,6 @@ class KingsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNav(),
     );
   }
 
@@ -182,7 +189,7 @@ class KingsPage extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: const Color(0xFFC49E61), 
+        color: const Color(0xFFC49E61),
         borderRadius: BorderRadius.circular(25),
       ),
       child: Row(
@@ -202,6 +209,7 @@ class KingsPage extends StatelessWidget {
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
+                      fontFamily: 'Cairo',
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -223,6 +231,7 @@ class KingsPage extends StatelessWidget {
                                     fontSize: 12.5,
                                     height: 1.4,
                                     fontWeight: FontWeight.bold,
+                                    fontFamily: 'Cairo',
                                   ),
                                 ),
                               ),
@@ -268,22 +277,4 @@ class KingsPage extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildBottomNav() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: const Color(0xFFC49E61),
-      unselectedItemColor: Colors.grey,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.menu), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.grid_view), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      ],
-    );
-  }
 }
-
-
