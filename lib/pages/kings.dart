@@ -36,7 +36,7 @@ class KingsPage extends StatelessWidget {
           children: const [
             Divider(height: 1, thickness: 1, color: Color(0xFF846043)),
             SizedBox(height: 20),
-            const Center(
+            Center(
               child: Text(
                 'ملوك الدولة السعودية',
                 style: TextStyle(
