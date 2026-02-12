@@ -47,7 +47,7 @@ class _RegionsPageState extends State<RegionsPage> {
         backgroundColor: Colors.white,
         title: Row(
           children: [
-            Image.asset('assets/images/regions/malfa-logo.png', height: 32),
+            Image.asset('assets/images/regions/logo.png', height: 40),
             const SizedBox(width: 8),
 
             Text(
