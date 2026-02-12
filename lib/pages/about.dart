@@ -1,40 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:malfa/layout/main_layout.dart';
 
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({super.key});
-
-  final Color primaryText = const Color.fromARGB(255, 0, 0, 0);
-  final Color secondaryText = const Color.fromARGB(255, 0, 0, 0);
-  final Color accentBrown = const Color.fromARGB(255, 105, 91, 60);
 
   static const double elementSpace = 24;
 
   final List<String> names = const [
     ' رهام سعد العتيبي',
+    'ريما سلطان السبيعي ',
     'طيف ماجد السبيعي ',
     'ندى مسلم السبيعي ',
-    'ريما سلطان السبيعي ',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF846043),
+        backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF2D5A41)),
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => const MainLayout()),
+              (route) => false,
+            );
+          },
         ),
-        centerTitle: true,
-        title: Text(
-          'من نحن',
+        title: const Text(
+          'العودة',
           style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-            fontSize: 28,
+            color: Color(0xFF2D5A41),
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
@@ -42,17 +42,36 @@ class AboutUsPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
         children: [
+          const Divider(height: 1, thickness: 1, color: Color(0xFF846043)),
+          const SizedBox(height: 10),
+
+          const Text(
+            'من نحن؟',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF846043),
+            ),
+          ),
+
+          const SizedBox(height: 12),
+
           _aboutCard(),
+
+          const SizedBox(height: elementSpace),
+
+          _toolsCard(),
 
           const SizedBox(height: elementSpace * 1.5),
 
-          Text(
+          const Text(
             'فريق العمل',
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.right,
             style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-              color: const Color.fromARGB(255, 0, 0, 0),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF846043),
             ),
           ),
 
@@ -61,6 +80,59 @@ class AboutUsPage extends StatelessWidget {
           ...List.generate(
             names.length,
             (index) => NameTile(name: names[index], index: index),
+          ),
+          // اسم الدكتورة (مشرفة المشروع)
+          Container(
+            margin: const EdgeInsets.only(bottom: 12),
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF6F1EA), // لون مختلف خفيف
+              borderRadius: BorderRadius.circular(14),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.03),
+                  blurRadius: 8,
+                  offset: const Offset(0, 6),
+                ),
+              ],
+            ),
+            child: Row(
+              textDirection: TextDirection.rtl,
+              children: const [
+                CircleAvatar(
+                  radius: 16,
+                  backgroundColor: Color(0xFFC49E61),
+                  child: Icon(
+                    Icons.workspace_premium,
+                    size: 18,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: const [
+                      Text(
+                        'تحت إشراف',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(fontSize: 13, color: Colors.black54),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        'د. بسمة الوسلاتي',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -81,18 +153,131 @@ class AboutUsPage extends StatelessWidget {
           ),
         ],
       ),
-      child: Text(
-        'نحن طالبات جمعنا الشغف بالتقنية وحب التجربة والتعلّم، '
-        'ومن هذا المنطلق جاء تطبيق «ملفَى» ليكون تجربة تعليمية '
-        'وإبداعية تتناول يوم التأسيس السعودي، وتسلّط الضوء على '
-        'هذه المناسبة الوطنية العزيزة بأسلوب تقني حديث وسهل '
-        'الاستخدام. يمثّل هذا المشروع امتدادًا لرحلتنا البرمجية، '
-        'حيث سعينا من خلاله إلى تطوير مهاراتنا وتطبيق ما تعلمناه '
-        'في مجال برمجة التطبيقات.',
-        textAlign: TextAlign.right,
-        textDirection: TextDirection.rtl,
-        style: TextStyle(fontSize: 17, height: 1.8, color: Colors.black),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          const Text(
+            'نحن طالبات جمعنا الشغف بالتقنية، وقد أُنجز هذا المشروع '
+            'كإحدى مبادرات عضوات نادي السحابة الإلكترونية في قسم علوم الحاسب. '
+            'وجاء تطبيق «ملفَى» ليقدّم تجربة تعليمية تفاعلية تُبرز يوم التأسيس '
+            'الوطني بأسلوب تقني حديث وسهل الاستخدام.',
+            textAlign: TextAlign.right,
+            textDirection: TextDirection.rtl,
+            style: TextStyle(fontSize: 17, height: 1.8),
+          ),
+
+          const SizedBox(height: 20),
+
+          const Text(
+            'الهدف من المشروع',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF846043),
+            ),
+          ),
+
+          const SizedBox(height: 8),
+
+          const Text(
+            'يمثل هذا المشروع امتداداً لرحلتنا البرمجية، حيث سعينا من خلاله '
+            'إلى تطوير مهاراتنا في مجال برمجة التطبيقات. كما يهدف المشروع إلى '
+            'إبراز مناسبة يوم التأسيس بأسلوب تفاعلي يعكس الهوية الوطنية ويتيح '
+            'تجربة تعليمية مبتكرة وسهلة الاستخدام لجميع الفئات.',
+            textAlign: TextAlign.right,
+            textDirection: TextDirection.rtl,
+            style: TextStyle(fontSize: 16, height: 1.7),
+          ),
+        ],
       ),
+    );
+  }
+
+  Widget _toolsCard() {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 12,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          const Text(
+            'الأدوات المستخدمة',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF846043),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const [
+              _ToolImage(
+                imagePath: 'assets/images/about/flutter_icon.png',
+                label: 'Flutter',
+              ),
+              _ToolImage(
+                imagePath: 'assets/images/about/dart.png',
+                label: 'Dart',
+              ),
+              _ToolImage(
+                imagePath: 'assets/images/about/githup_icon.png',
+                label: 'GitHub',
+              ),
+              _ToolImage(
+                imagePath: 'assets/images/about/Figma_icon.png',
+                label: 'Figma',
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ToolImage extends StatelessWidget {
+  final String imagePath;
+  final String label;
+
+  const _ToolImage({required this.imagePath, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 60,
+          height: 60,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.05),
+                blurRadius: 8,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Image.asset(imagePath, fit: BoxFit.contain),
+        ),
+        const SizedBox(height: 8),
+        Text(label, style: const TextStyle(fontSize: 14)),
+      ],
     );
   }
 }
@@ -122,7 +307,7 @@ class NameTile extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 255, 255, 255),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(14),
           boxShadow: [
             BoxShadow(
@@ -137,7 +322,7 @@ class NameTile extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: 16,
-              backgroundColor: const Color(0xFFC49E61),
+              backgroundColor: Color(0xFFC49E61),
               child: Icon(Icons.person, size: 18, color: Colors.black54),
             ),
             const SizedBox(width: 14),
@@ -148,7 +333,7 @@ class NameTile extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Colors.black,
                 ),
               ),
             ),
