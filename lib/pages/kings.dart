@@ -56,7 +56,7 @@ class KingsPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            const Divider(thickness: 1),
+            const Divider(height: 1, thickness: 1, color: Color(0xFF846043)),
             const SizedBox(height: 20),
             const Center(
               child: Text(
