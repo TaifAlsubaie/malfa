@@ -33,10 +33,17 @@ class KingsPage extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
+
           children: const [
             Divider(height: 1, thickness: 1, color: Color(0xFF846043)),
             SizedBox(height: 20),
             Center(
+
+          children: [
+            const Divider(height: 1, thickness: 1, color: Color(0xFF846043)),
+            const SizedBox(height: 20),
+            const Center(
+
               child: Text(
                 'ملوك الدولة السعودية',
                 style: TextStyle(

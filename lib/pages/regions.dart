@@ -153,6 +153,7 @@ class _RegionsPageState extends State<RegionsPage> {
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
+                                    fontFamily: 'Cairo',
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -163,6 +164,7 @@ class _RegionsPageState extends State<RegionsPage> {
                                   style: const TextStyle(
                                     color: Colors.white70,
                                     fontSize: 11,
+                                    fontFamily: 'Cairo',
                                   ),
                                 ),
 
@@ -173,6 +175,7 @@ class _RegionsPageState extends State<RegionsPage> {
                                     fontSize: 11,
                                     color: Color.fromRGBO(255, 255, 255, 0.7),
                                     fontWeight: FontWeight.w500,
+                                    fontFamily: 'Cairo',
                                   ),
                                 ),
                               ],
