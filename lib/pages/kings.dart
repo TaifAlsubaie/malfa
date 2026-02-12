@@ -90,23 +90,38 @@ class _KingsPageState extends State<KingsPage> {
           ),
         ),
       ),
-      body: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        itemCount: kingsData.length + 1,
-        itemBuilder: (context, index) {
-          if (index == 0) return _buildHeader();
-          final kingIndex = index - 1;
-          return _AnimatedTimelineItem(
-            key: ValueKey(kingsData[kingIndex]["subtitle"]), // أضفت Key لضمان استقرار الأنيميشن
-            king: kingsData[kingIndex],
-            index: kingIndex,
-            total: kingsData.length,
-          );
-        },
-      ),
-    );
-  }
+
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          children: const [
+            Divider(height: 1, thickness: 1, color: Color(0xFF846043)),
+            SizedBox(height: 20),
+            Center(
+              child: Text(
+                'ملوك الدولة السعودية',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF8B6D45),
+                  fontFamily: 'Cairo',
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 15),
+              child: Text(
+                'أهلاً بك في صفحة ملوك الدولة السعودية، حيث يمكنك التعرف على حكام المملكة عبر تاريخها منذ الدولة السعودية الأولى حتى يومنا هذا',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 5, 58, 13),
+                  height: 1.5,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Cairo',
+                ),
+              ),
+            ),
+
 
   Widget _buildHeader() {
     return Column(
