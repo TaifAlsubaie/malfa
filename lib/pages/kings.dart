@@ -169,7 +169,6 @@ class _AnimatedKingCard extends StatefulWidget {
   final int index; // ترتيب الكرت
 
   const _AnimatedKingCard({
-    super.key,
     required this.title,
     required this.points,
     required this.imageLeft,
