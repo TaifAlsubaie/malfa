@@ -5,12 +5,13 @@ class AboutUsPage extends StatelessWidget {
   const AboutUsPage({super.key});
 
   static const double elementSpace = 24;
+  static const double titleRightPadding = 0;
 
   final List<String> names = const [
-    ' رهام سعد العتيبي',
-    'ريما سلطان السبيعي ',
-    'طيف ماجد السبيعي ',
-    'ندى مسلم السبيعي ',
+    'رهام سعد العتيبي',
+    'ريما سلطان السبيعي',
+    'طيف ماجد السبيعي',
+    'ندى مسلم السبيعي',
   ];
 
   @override
@@ -38,55 +39,69 @@ class AboutUsPage extends StatelessWidget {
           ),
         ),
       ),
-
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
         children: [
           const Divider(height: 1, thickness: 1, color: Color(0xFF846043)),
           const SizedBox(height: 10),
 
-          const Text(
-            'من نحن؟',
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF846043),
-            ),
+          // كارت "من نحن؟"
+          _animatedCard(
+            title: 'من نحن؟',
+            content:
+                'نحن طالبات جمعنا الشغف بالتقنية، وقد تم إنجاز هذا المشروع '
+                'كإحدى مبادرات عضوات نادي السحابة الإلكترونية في قسم علوم الحاسب. '
+                'وجاء تطبيق «ملفَى» ليقدّم تجربة تعليمية تفاعلية تُبرز يوم التأسيس '
+                'الوطني بأسلوب تقني حديث وسهل الاستخدام.',
+            index: 0,
           ),
-
-          const SizedBox(height: 12),
-
-          _aboutCard(),
-
           const SizedBox(height: elementSpace),
 
-          _toolsCard(),
+          // كارت "الهدف من المشروع"
+          _animatedCard(
+            title: 'الهدف من المشروع',
+            content:
+                'يمثل هذا المشروع امتداداً لرحلتنا البرمجية، حيث سعينا من خلاله '
+                'إلى تطوير مهاراتنا في مجال برمجة التطبيقات. كما يهدف المشروع إلى '
+                'إبراز مناسبة يوم التأسيس بأسلوب تفاعلي يعكس الهوية الوطنية ويتيح '
+                'تجربة تعليمية مبتكرة وسهلة الاستخدام لجميع الفئات.',
+            index: 1,
+          ),
+          const SizedBox(height: elementSpace),
 
+          // كارت "الأدوات المستخدمة"
+          _animatedCardWidget(
+            title: 'الأدوات المستخدمة',
+            child: _toolsCard(),
+            index: 2,
+          ),
           const SizedBox(height: elementSpace * 1.5),
 
-          const Text(
-            'فريق العمل',
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF846043),
+          // كارت "فريق العمل"
+          const Padding(
+            padding: EdgeInsets.only(right: titleRightPadding),
+            child: Text(
+              'فريق العمل',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF846043),
+              ),
             ),
           ),
-
           const SizedBox(height: elementSpace),
-
           ...List.generate(
             names.length,
             (index) => NameTile(name: names[index], index: index),
           ),
-          // اسم الدكتورة (مشرفة المشروع)
+
+          // كارت الإشراف
           Container(
             margin: const EdgeInsets.only(bottom: 12),
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             decoration: BoxDecoration(
-              color: const Color(0xFFF6F1EA), // لون مختلف خفيف
+              color: const Color(0xFFF6F1EA),
               borderRadius: BorderRadius.circular(14),
               boxShadow: [
                 BoxShadow(
@@ -112,7 +127,7 @@ class AboutUsPage extends StatelessWidget {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
+                    children: [
                       Text(
                         'تحت إشراف',
                         textAlign: TextAlign.right,
@@ -139,111 +154,138 @@ class AboutUsPage extends StatelessWidget {
     );
   }
 
-  Widget _aboutCard() {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            blurRadius: 12,
-            offset: const Offset(0, 8),
+  Widget _animatedCard({
+    required String title,
+    required String content,
+    int index = 0,
+  }) {
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: 1),
+      duration: Duration(milliseconds: 400 + (index * 100)),
+      curve: Curves.easeOut,
+      builder: (context, value, child) {
+        return Opacity(
+          opacity: value,
+          child: Transform.translate(
+            offset: Offset(0, 20 * (1 - value)),
+            child: child,
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          const Text(
-            'نحن طالبات جمعنا الشغف بالتقنية، وقد أُنجز هذا المشروع '
-            'كإحدى مبادرات عضوات نادي السحابة الإلكترونية في قسم علوم الحاسب. '
-            'وجاء تطبيق «ملفَى» ليقدّم تجربة تعليمية تفاعلية تُبرز يوم التأسيس '
-            'الوطني بأسلوب تقني حديث وسهل الاستخدام.',
-            textAlign: TextAlign.right,
-            textDirection: TextDirection.rtl,
-            style: TextStyle(fontSize: 17, height: 1.8),
-          ),
-
-          const SizedBox(height: 20),
-
-          const Text(
-            'الهدف من المشروع',
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF846043),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(18),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.04),
+              blurRadius: 12,
+              offset: const Offset(0, 8),
             ),
-          ),
-
-          const SizedBox(height: 8),
-
-          const Text(
-            'يمثل هذا المشروع امتداداً لرحلتنا البرمجية، حيث سعينا من خلاله '
-            'إلى تطوير مهاراتنا في مجال برمجة التطبيقات. كما يهدف المشروع إلى '
-            'إبراز مناسبة يوم التأسيس بأسلوب تفاعلي يعكس الهوية الوطنية ويتيح '
-            'تجربة تعليمية مبتكرة وسهلة الاستخدام لجميع الفئات.',
-            textAlign: TextAlign.right,
-            textDirection: TextDirection.rtl,
-            style: TextStyle(fontSize: 16, height: 1.7),
-          ),
-        ],
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: titleRightPadding),
+              child: Text(
+                title,
+                textAlign: TextAlign.right,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF846043),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              content,
+              textAlign: TextAlign.right,
+              textDirection: TextDirection.rtl,
+              style: const TextStyle(fontSize: 16, height: 1.7),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _toolsCard() {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            blurRadius: 12,
-            offset: const Offset(0, 8),
+  Widget _animatedCardWidget({
+    required String title,
+    required Widget child,
+    int index = 0,
+  }) {
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: 1),
+      duration: Duration(milliseconds: 400 + (index * 100)),
+      curve: Curves.easeOut,
+      builder: (context, value, widgetChild) {
+        return Opacity(
+          opacity: value,
+          child: Transform.translate(
+            offset: Offset(0, 20 * (1 - value)),
+            child: widgetChild,
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          const Text(
-            'الأدوات المستخدمة',
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF846043),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(18),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.04),
+              blurRadius: 12,
+              offset: const Offset(0, 8),
             ),
-          ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              _ToolImage(
-                imagePath: 'assets/images/about/flutter_icon.png',
-                label: 'Flutter',
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: titleRightPadding),
+              child: Text(
+                title,
+                textAlign: TextAlign.right,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF846043),
+                ),
               ),
-              _ToolImage(
-                imagePath: 'assets/images/about/dart.png',
-                label: 'Dart',
-              ),
-              _ToolImage(
-                imagePath: 'assets/images/about/githup_icon.png',
-                label: 'GitHub',
-              ),
-              _ToolImage(
-                imagePath: 'assets/images/about/Figma_icon.png',
-                label: 'Figma',
-              ),
-            ],
-          ),
-        ],
+            ),
+            const SizedBox(height: 12),
+            child,
+          ],
+        ),
       ),
+    );
+  }
+
+  // الأدوات المستخدمة
+  Widget _toolsCard() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: const [
+        _ToolImage(
+          imagePath: 'assets/images/about/flutter_icon.png',
+          label: 'Flutter',
+        ),
+        _ToolImage(imagePath: 'assets/images/about/dart.png', label: 'Dart'),
+        _ToolImage(
+          imagePath: 'assets/images/about/githup_icon.png',
+          label: 'GitHub',
+        ),
+        _ToolImage(
+          imagePath: 'assets/images/about/Figma_icon.png',
+          label: 'Figma',
+        ),
+      ],
     );
   }
 }

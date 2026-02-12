@@ -234,7 +234,7 @@ class _RegionCard extends StatelessWidget {
                 region['name']!,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Color(0xFFe5d7c5),
                   fontSize: 16,
                   fontFamily: 'Cairo',
                   fontWeight: FontWeight.bold,
