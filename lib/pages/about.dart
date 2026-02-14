@@ -35,12 +35,13 @@ class AboutUsPage extends StatelessWidget {
           'العودة',
           style: TextStyle(
             color: Color(0xFF2D5A41),
+            fontFamily: 'cairo',
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
+        padding: const EdgeInsets.fromLTRB(20, 7, 20, 32),
         children: [
           const Divider(height: 1, thickness: 1, color: Color(0xFF846043)),
           const SizedBox(height: 10),
@@ -85,6 +86,7 @@ class AboutUsPage extends StatelessWidget {
               textAlign: TextAlign.right,
               style: TextStyle(
                 fontSize: 18,
+                fontFamily: 'cairo',
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF846043),
               ),
@@ -131,7 +133,11 @@ class AboutUsPage extends StatelessWidget {
                       Text(
                         'تحت إشراف',
                         textAlign: TextAlign.right,
-                        style: TextStyle(fontSize: 13, color: Colors.black54),
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontFamily: 'cairo',
+                          color: Colors.black54,
+                        ),
                       ),
                       SizedBox(height: 4),
                       Text(
@@ -140,6 +146,7 @@ class AboutUsPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
+                          fontFamily: 'cairo',
                           color: Colors.black,
                         ),
                       ),
@@ -197,6 +204,7 @@ class AboutUsPage extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF846043),
+                  fontFamily: 'cairo',
                 ),
               ),
             ),
@@ -205,7 +213,11 @@ class AboutUsPage extends StatelessWidget {
               content,
               textAlign: TextAlign.right,
               textDirection: TextDirection.rtl,
-              style: const TextStyle(fontSize: 16, height: 1.7),
+              style: const TextStyle(
+                fontSize: 16,
+                fontFamily: 'cairo',
+                height: 1.7,
+              ),
             ),
           ],
         ),
