@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// كلاس لتنظيم بيانات المناطق
+// كلاس تنظيم البيانات بكامل النصوص بدون أي حذف
 class RegionContent {
   final String title,
       description,
@@ -10,8 +10,10 @@ class RegionContent {
       location,
       culture,
       arts,
+      folkImage,
       landmarks,
       food;
+
   RegionContent({
     required this.title,
     required this.description,
@@ -21,15 +23,24 @@ class RegionContent {
     required this.location,
     required this.culture,
     required this.arts,
+    required this.folkImage,
     required this.landmarks,
     required this.food,
   });
 }
 
-class DetailsPage extends StatelessWidget {
+class DetailsPage extends StatefulWidget {
   final String regionName;
-
   DetailsPage({required this.regionName});
+
+  @override
+  State<DetailsPage> createState() => _DetailsPageState();
+}
+
+class _DetailsPageState extends State<DetailsPage>
+    with SingleTickerProviderStateMixin {
+  static const Color brandBrown = Color(0xFF70563B);
+  bool _startSpecificAnimation = false;
 
   final Map<String, RegionContent> allRegions = {
     'الجنوبية': RegionContent(
@@ -37,30 +48,32 @@ class DetailsPage extends StatelessWidget {
       mainImage: 'assets/images/details/south_main.jpg',
       dress1: 'assets/images/details/south_women.jpg',
       dress2: 'assets/images/details/south_men.jpg',
+      folkImage: 'assets/images/details/south_folk.jpg',
       description:
-          'تُعد المنطقة الجنوبية من أعرق مناطق المملكة العربية السعودية، حيث تمتد جذورها التاريخية إلى حضارات قديمة تركت آثارها الواضحة في العمارة والعادات والثقافة. ساهم موقعها الجبلي وتنوع بيئاتها الطبيعية في تشكيل نمط حياة مميز، وجعلها منطقة ذات أهمية استراتيجية وثقافية منذ القدم. كما كان لها دور بارز في دعم وحدة الدولة السعودية وتعزيز استقرارها عبر العصور، بما تملكه من إرث حضاري وإنساني غني.',
+          'تُعد المنطقة الجنوبية من أعرق مناطق المملكة العربية السعودية، حيث تمتد جذورها التاريخية إلى حضارات قديمة تركت آثارها الواضحة في العمارة والعادات والثقافة. ساهم موقعها الجبلي وتنوع بيئاتها الطبيعية في تشكيل نمط حياة مميز، وجعلها منطقة ذات أهمية استراتيجية وثقافية منذ القدم. كما كان لها دور بارز في دعم وحدة الدولة السعودية وتعزيز استقرارها عبر العصور، بما تملكه من إرث حضاري إنساني غني.',
       location:
-          'تقع في جنوب غرب المملكة العربية السعودية، وتضم عددًا من المناطق الإدارية، أبرزها عسير، وجازان، ونجران، والباحة. تحدها من الجنوب الجمهورية اليمنية، ومن الغرب البحر الأحمر، ومن الشمال منطقة مكة المكرمة، ومن الشرق منطقة الرياض. ويمنحها هذا الموقع تنوعًا جغرافيًا فريدًا يجمع بين الجبال والسهول والسواحل.',
+          'تقع في جنوب غرب المملكة العربية السعودية، وتضم عددًا من المناطق الإدارية، أبرزها عسير، وجازان، نجران، والباحة. تحدها من الجنوب الجمهورية اليمنية، ومن الغرب البحر الأحمر، ومن الشمال منطقة مكة المكرمة، ومن الشرق منطقة الرياض. ويمنحها هذا الموقع تنوعًا جغرافيًا فريدًا يجمع بين الجبال والسهول والسواحل.',
       culture:
-          'تتميز المنطقة الجنوبية بتراث ثقافي غني يعكس تنوع بيئاتها وطبيعتها الجبلية، حيث تشتهر بعادات مترسخة في الكرم والتكاتف الاجتماعي، والارتباط بالأرض والزراعة. كما يظهر هذا التراث في العمارة التقليدية، والملابس الشعبية، والعادات الاجتماعية التي ما زالت حاضرة في حياة أهالي المنطقة حتى اليوم.',
+          'تتميز المنطقة الجنوبية بتراث ثقافي غني يعكس تنوع بيئاتها وطبيعتها الجبلية، حيث تشتهر بعادات مترسخة في الكرم والتكاتف الاجتماعي، والارتباط بالأرض والزراعة. كما يظهر هذا التراث في العمارة التقليدية، والملابس الشعبية، والعادات الاجتماعية التي ما زالت حاضرة في حياة أهالي المنطقة اليوم.',
       arts:
           'تزخر المنطقة الجنوبية بالعديد من الفنون الشعبية التي تعكس هويتها الثقافية العميقة، ومن أبرزها فن الخطوة الجنوبية، وفن العرضة، وفن الزامل، إضافة إلى الأهازيج الجماعية التي تُؤدى في المناسبات الوطنية والاجتماعية. وتمثل هذه الفنون وسيلة للتعبير عن الفخر والانتماء، وتعكس روح التعاون والشجاعة التي عُرف بها أهل المنطقة.',
       landmarks:
           'تضم المنطقة الجنوبية العديد من المعالم التاريخية والسياحية، مثل القرى التراثية المبنية من الحجر والطين، والقلاع والحصون القديمة التي استخدمت للدفاع والمراقبة. كما تشتهر بالمدرجات الزراعية الممتدة على سفوح الجبال، إضافة إلى المواقع الأثرية التي تعكس عمق التاريخ الإنساني في المنطقة.',
       food:
-          'تشتهر المنطقة الجنوبية بأكلات شعبية مميزة تعتمد على الحبوب والمنتجات الزراعية المحلية، مثل العريكة، والعصيدة، والمرقوق، والحنيذ، إضافة إلى استخدام السمن والعسل في العديد من الأطباق. وتعكس هذه الأطعمة طبيعة الحياة الجبلية وما اتسمت به من بساطة وارتباط وثيق بالبيئة.',
+          'تشتهر المنطقة الجنوبية بأكلات شعبية مميزة تعتمد على الحبوب والمنتجات الزراعية المحلية، مثل العريكة، والعصيدة، والمرقوق، الحنيذ، إضافة إلى استخدام السمن والعسل في العديد من الأطباق. وتعكس هذه الأطعمة طبيعة الحياة الجبلية وما اتسمت به من بساطة وارتباط وثيق بالبيئة.',
     ),
     'الشمالية': RegionContent(
       title: 'المنطقة الشمالية',
       mainImage: 'assets/images/details/north_main.jpg',
       dress1: 'assets/images/details/north_women.jpg',
       dress2: 'assets/images/details/north_men.jpg',
+      folkImage: 'assets/images/details/north_folk.jpg',
       description:
           'تُعد المنطقة الشمالية من المناطق ذات الأهمية التاريخية في المملكة العربية السعودية، حيث شكّل موقعها الجغرافي نقطة عبور رئيسية بين الجزيرة العربية وبلاد الشام منذ القدم. وأسهم هذا الموقع في ازدهار الحركة التجارية واستقرار المجتمعات فيها، كما كان لها دور بارز في دعم الدولة السعودية وتعزيز وحدتها عبر المراحل التاريخية المختلفة.',
       location:
           'تقع في شمال المملكة العربية السعودية، وتمتد على مساحات واسعة تحدها من الشمال المملكة الأردنية الهاشمية، ومن الشرق منطقة الحدود الشمالية، ومن الغرب منطقة تبوك، ومن الجنوب منطقة القصيم. ويُعد موقعها الاستراتيجي عاملًا مهمًا جعلها حلقة وصل بين مناطق المملكة والمناطق المجاورة منذ العصور القديمة.',
       culture:
-          'تتميز المنطقة الشمالية بتراث عريق متأثر ببيئتها الصحراوية وتاريخها الممتد، حيث تنتشر العادات القائمة على الكرم وحسن الضيافة والشهامة. كما تُعد المجالس الشعبية، واللباس التقليدي، والعلاقات الاجتماعية المتماسكة جزءًا أساسيًا من الهوية الثقافية لأهالي المنطقة.',
+          'تتميز المنطقة الشمالية بتراث عريق متأثر ببيئاتها الصحراوية وتاريخها الممتد، حيث تنتشر العادات القائمة على الكرم وحسن الضيافة والشهامة. كما تُعد المجالس الشعبية، واللباس التقليدي، والعلاقات الاجتماعية المتماسكة جزءًا أساسيًا من الهوية الثقافية لأهالي المنطقة.',
       arts:
           'تزخر المنطقة الشمالية بعدد من الفنون الشعبية التي تعكس أصالة المجتمع وقيمه، ومن أبرزها العرضة الشمالية، والشيلات التراثية التي تعبّر عن الفخر والانتماء، إضافة إلى الشعر النبطي الذي يحتل مكانة مهمة في المناسبات الاجتماعية والوطنية، ويُعد وسيلة للتعبير عن التاريخ والهوية.',
       landmarks:
@@ -73,6 +86,7 @@ class DetailsPage extends StatelessWidget {
       mainImage: 'assets/images/details/west_main.jpg',
       dress1: 'assets/images/details/west_women.jpg',
       dress2: 'assets/images/details/west_men.jpg',
+      folkImage: 'assets/images/details/west_folk.jpg',
       description:
           'تُعد المنطقة الغربية من أبرز مناطق المملكة العربية السعودية تاريخيًا ودينيًا، لما تحتضنه من مدينتين مقدستين لهما مكانة عظيمة في العالم الإسلامي. وأسهم موقعها على ساحل البحر الأحمر في جعلها مركزًا مهمًا للتجارة والحج والتواصل الحضاري، مما عزز دورها في تاريخ الدولة السعودية ومسيرتها نحو الوحدة والتنمية.',
       location:
@@ -91,6 +105,7 @@ class DetailsPage extends StatelessWidget {
       mainImage: 'assets/images/details/east_main.jpg',
       dress1: 'assets/images/details/east_women.jpg',
       dress2: 'assets/images/details/east_men.jpg',
+      folkImage: 'assets/images/details/east_folk.jpg',
       description:
           'تُعد المنطقة الشرقية من أقدم وأهم مناطق المملكة العربية السعودية، حيث شكّل موقعها الساحلي على الخليج العربي عاملًا رئيسيًا في ازدهارها عبر العصور. وكانت المنطقة معبرًا للتجارة البحرية ومحطة للتواصل الاقتصادي، وأسهمت في تعزيز الاستقرار ودعم موارد الدولة السعودية منذ بداياتها. كما تميّزت بتنوعها الثقافي والاجتماعي، مما جعلها جزءًا مهمًا من تاريخ الدولة ومسيرتها نحو الوحدة والنماء.',
       location:
@@ -109,6 +124,7 @@ class DetailsPage extends StatelessWidget {
       mainImage: 'assets/images/details/central_main.jpg',
       dress1: 'assets/images/details/central_women.jpg',
       dress2: 'assets/images/details/central_men.jpg',
+      folkImage: 'assets/images/details/central_folk.jpg',
       description:
           'تُعد المنطقة الوسطى قلب المملكة العربية السعودية، ومهد انطلاقة الدولة السعودية، حيث ارتبط تاريخها ببدايات التوحيد وترسيخ أسس الحكم والاستقرار. وأسهم موقعها الجغرافي في جعلها مركزًا سياسيًا وإداريًا مهمًا، كما لعبت دورًا بارزًا في توحيد البلاد ودعم مسيرتها التنموية عبر العصور.',
       location:
@@ -125,93 +141,91 @@ class DetailsPage extends StatelessWidget {
   };
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(milliseconds: 400), () {
+        if (mounted) setState(() => _startSpecificAnimation = true);
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final region = allRegions[regionName] ?? allRegions['الشمالية']!;
-    const Color brandBrown = Color(0xFF70563B);
+    final region = allRegions[widget.regionName] ?? allRegions['الوسطى']!;
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Directionality(
-        textDirection: TextDirection.rtl,
-        child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildBackButton(context, brandBrown),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Divider(
-                    color: brandBrown.withOpacity(0.3),
-                    thickness: 1.2,
-                  ),
-                ),
-                _buildImageContainer(region.mainImage),
-                const SizedBox(height: 30),
-                _buildSectionTitle(region.title, brandBrown),
-                _buildSectionBody(region.description),
-                const SizedBox(height: 30),
-                _buildSectionTitle('الزي الرسمي', brandBrown),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    Expanded(child: _dressCard(region.dress1, brandBrown)),
-                    const SizedBox(width: 15),
-                    Expanded(child: _dressCard(region.dress2, brandBrown)),
-                  ],
-                ),
-                _buildSectionGroup(
-                  'الموقع الجغرافي',
-                  region.location,
-                  brandBrown,
-                ),
-                _buildSectionGroup(
-                  'التراث والثقافة',
-                  region.culture,
-                  brandBrown,
-                ),
-                _buildSectionGroup('الفنون الشعبية', region.arts, brandBrown),
-                _buildSectionGroup(
-                  'أبرز المعالم',
-                  region.landmarks,
-                  brandBrown,
-                ),
-                _buildSectionGroup(
-                  'المأكولات الشعبية',
-                  region.food,
-                  brandBrown,
-                ),
-                const SizedBox(height: 50),
-              ],
-            ),
-          ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        leadingWidth: 150,
+        leading: Container(
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.only(left: 20),
+          child: _buildBackButton(context, brandBrown),
         ),
       ),
-    );
-  }
-
-  Widget _buildBackButton(BuildContext context, Color color) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: GestureDetector(
-        onTap: () => Navigator.pop(context),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 15.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'العودة',
-                style: TextStyle(
-                  color: color,
-                  fontSize: 18,
-                  fontFamily: 'Cairo',
-                  fontWeight: FontWeight.w600,
-                ),
+              const SizedBox(height: 20),
+
+              // الصورة الرئيسية: تظهر مباشرة (ثابتة)
+              _buildImageFrame(region.mainImage, brandBrown, isMain: true),
+
+              const SizedBox(height: 30),
+              _buildSectionTitle(region.title, brandBrown),
+              _buildSectionBody(region.description),
+
+              const SizedBox(height: 30),
+              _buildSectionTitle('الزي الرسمي', brandBrown),
+              const SizedBox(height: 15),
+
+              // صور الزي: أنميشن بطيء وفخم
+              Row(
+                children: [
+                  Expanded(
+                    child: _applyAnimation(
+                      child: _buildDressCard(region.dress1, brandBrown),
+                    ),
+                  ),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: _applyAnimation(
+                      child: _buildDressCard(region.dress2, brandBrown),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 8),
-              Icon(Icons.arrow_forward_ios, color: color, size: 16),
+
+              _buildNormalSection(
+                'الموقع الجغرافي',
+                region.location,
+                brandBrown,
+              ),
+              _buildNormalSection(
+                'التراث والثقافة',
+                region.culture,
+                brandBrown,
+              ),
+
+              // صور الفنون الشعبية: تم توحيدها لتأخذ نفس تأثير الأزياء الشعبية بالضبط
+              _buildFolkSection(
+                'الفنون الشعبية',
+                region.arts,
+                region.folkImage,
+                brandBrown,
+              ),
+
+              _buildNormalSection('أبرز المعالم', region.landmarks, brandBrown),
+              _buildNormalSection('المأكولات الشعبية', region.food, brandBrown),
+              const SizedBox(height: 50),
             ],
           ),
         ),
@@ -219,50 +233,72 @@ class DetailsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildImageContainer(String path) {
+  // دالة الأنميشن الموحدة للأزياء والفنون الشعبية (تأثير Scale + Opacity بطيء)
+  Widget _applyAnimation({required Widget child}) {
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 1500),
+      opacity: _startSpecificAnimation ? 1.0 : 0.0,
+      child: AnimatedScale(
+        duration: const Duration(milliseconds: 1500),
+        scale: _startSpecificAnimation ? 1.0 : 0.7, // نفس نسبة التكبير
+        curve: Curves.easeOutBack, // نفس منحنى الحركة للأزياء
+        child: child,
+      ),
+    );
+  }
+
+  Widget _buildImageFrame(String path, Color color, {bool isMain = false}) {
     return Container(
-      width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 138, 95, 30),
         borderRadius: BorderRadius.circular(25),
+        border: Border.all(color: color, width: 2),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(23),
         child: AspectRatio(
-          aspectRatio: 16 / 10,
+          aspectRatio: isMain ? 16 / 10 : 16 / 9,
           child: Image.asset(path, fit: BoxFit.cover),
         ),
       ),
     );
   }
 
-  Widget _dressCard(String imagePath, Color brandColor) {
+  // بناء كارت الزي
+  Widget _buildDressCard(String path, Color color) {
     return Container(
       height: 220,
       decoration: BoxDecoration(
-        color: brandColor,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: brandColor, width: 1.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        border: Border.all(color: color, width: 2),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(19),
-        child: Image.asset(
-          imagePath,
-          fit: BoxFit.cover,
-          width: double.infinity,
-        ),
+        borderRadius: BorderRadius.circular(18),
+        child: Image.asset(path, fit: BoxFit.cover),
       ),
     );
   }
 
-  Widget _buildSectionGroup(String title, String body, Color color) {
+  // بناء قسم الفنون الشعبية بنفس أنميشن الأزياء
+  Widget _buildFolkSection(
+    String title,
+    String body,
+    String imagePath,
+    Color color,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 30),
+        _buildSectionTitle(title, color),
+        _buildSectionBody(body),
+        const SizedBox(height: 15),
+        // هنا تم استخدام نفس دالة الأنميشن ونفس إطار الصورة الخاص بالفنون
+        _applyAnimation(child: _buildImageFrame(imagePath, color)),
+      ],
+    );
+  }
+
+  Widget _buildNormalSection(String title, String body, Color color) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -296,6 +332,28 @@ class DetailsPage extends StatelessWidget {
           fontFamily: 'Cairo',
           height: 1.6,
         ),
+      ),
+    );
+  }
+
+  Widget _buildBackButton(BuildContext context, Color color) {
+    return GestureDetector(
+      onTap: () => Navigator.pop(context),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.arrow_back_ios, color: color, size: 18),
+          const SizedBox(width: 4),
+          Text(
+            'العودة',
+            style: TextStyle(
+              color: color,
+              fontSize: 18,
+              fontFamily: 'Cairo',
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
       ),
     );
   }
