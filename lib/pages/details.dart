@@ -174,6 +174,7 @@ class _DetailsPageState extends State<DetailsPage>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Divider(height: 1, thickness: 1, color: Color(0xFF846043)),
               const SizedBox(height: 20),
 
               // الصورة الرئيسية: تظهر مباشرة (ثابتة)
@@ -350,7 +351,7 @@ class _DetailsPageState extends State<DetailsPage>
               color: color,
               fontSize: 18,
               fontFamily: 'Cairo',
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
