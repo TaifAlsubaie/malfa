@@ -325,7 +325,7 @@ class _AnimatedTimelineItemState extends State<_AnimatedTimelineItem>
                 : TextAlign.left,
             style: const TextStyle(
               color: Color(0xFF846043),
-              fontSize: 16,
+              fontSize: 13,
               fontWeight: FontWeight.w700,
               fontFamily: 'Cairo',
             ),
@@ -372,3 +372,4 @@ class _AnimatedTimelineItemState extends State<_AnimatedTimelineItem>
     );
   }
 }
+
