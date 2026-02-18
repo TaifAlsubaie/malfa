@@ -35,7 +35,7 @@ class AboutUsPage extends StatelessWidget {
           'العودة',
           style: TextStyle(
             color: Color(0xFF2D5A41),
-            fontFamily: 'cairo',
+            fontFamily: 'Cairo', // تم التأكد من الخط هنا
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -46,7 +46,6 @@ class AboutUsPage extends StatelessWidget {
           const Divider(height: 1, thickness: 1, color: Color(0xFF846043)),
           const SizedBox(height: 10),
 
-          // كارت "من نحن؟"
           _animatedCard(
             title: 'من نحن؟',
             content:
@@ -58,7 +57,6 @@ class AboutUsPage extends StatelessWidget {
           ),
           const SizedBox(height: elementSpace),
 
-          // كارت "الهدف من المشروع"
           _animatedCard(
             title: 'الهدف من المشروع',
             content:
@@ -70,7 +68,6 @@ class AboutUsPage extends StatelessWidget {
           ),
           const SizedBox(height: elementSpace),
 
-          // كارت "الأدوات المستخدمة"
           _animatedCardWidget(
             title: 'الأدوات المستخدمة',
             child: _toolsCard(),
@@ -78,7 +75,6 @@ class AboutUsPage extends StatelessWidget {
           ),
           const SizedBox(height: elementSpace * 1.5),
 
-          // كارت "فريق العمل"
           const Padding(
             padding: EdgeInsets.only(right: titleRightPadding),
             child: Text(
@@ -86,7 +82,7 @@ class AboutUsPage extends StatelessWidget {
               textAlign: TextAlign.right,
               style: TextStyle(
                 fontSize: 18,
-                fontFamily: 'cairo',
+                fontFamily: 'Cairo', // تطبيق خط Cairo
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF846043),
               ),
@@ -98,59 +94,77 @@ class AboutUsPage extends StatelessWidget {
             (index) => NameTile(name: names[index], index: index),
           ),
 
+          const SizedBox(height: 12),
+
           // كارت الإشراف
-          Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-            decoration: BoxDecoration(
-              color: const Color(0xFFF6F1EA),
-              borderRadius: BorderRadius.circular(14),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.03),
-                  blurRadius: 8,
-                  offset: const Offset(0, 6),
-                ),
-              ],
-            ),
-            child: Row(
-              textDirection: TextDirection.rtl,
-              children: const [
-                CircleAvatar(
-                  radius: 16,
-                  backgroundColor: Color(0xFFC49E61),
-                  child: Icon(
-                    Icons.workspace_premium,
-                    size: 18,
-                    color: Colors.white,
+          _supervisionCard(
+            label: 'تحت إشراف',
+            name: 'د. بسمة الوسلاتي',
+            icon: Icons.workspace_premium,
+          ),
+
+          const SizedBox(height: 12),
+
+          // كارت شكر وتقدير الجديد بنفس التصميم
+          _supervisionCard(
+            label: 'شكر وتقدير',
+            name: 'د. ليلى عبد القادر',
+            icon: Icons.favorite,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _supervisionCard({
+    required String label,
+    required String name,
+    required IconData icon,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF6F1EA),
+        borderRadius: BorderRadius.circular(14),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.03),
+            blurRadius: 8,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Row(
+        textDirection: TextDirection.rtl,
+        children: [
+          CircleAvatar(
+            radius: 16,
+            backgroundColor: const Color(0xFFC49E61),
+            child: Icon(icon, size: 18, color: Colors.white),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  label,
+                  textAlign: TextAlign.right,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontFamily: 'Cairo', // تطبيق خط Cairo
+                    color: Colors.black54,
                   ),
                 ),
-                SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        'تحت إشراف',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontFamily: 'cairo',
-                          color: Colors.black54,
-                        ),
-                      ),
-                      SizedBox(height: 4),
-                      Text(
-                        'د. بسمة الوسلاتي',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'cairo',
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
+                const SizedBox(height: 4),
+                Text(
+                  name,
+                  textAlign: TextAlign.right,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Cairo', // تطبيق خط Cairo
+                    color: Colors.black,
                   ),
                 ),
               ],
@@ -195,17 +209,14 @@ class AboutUsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: titleRightPadding),
-              child: Text(
-                title,
-                textAlign: TextAlign.right,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF846043),
-                  fontFamily: 'cairo',
-                ),
+            Text(
+              title,
+              textAlign: TextAlign.right,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF846043),
+                fontFamily: 'Cairo', // تطبيق خط Cairo
               ),
             ),
             const SizedBox(height: 8),
@@ -215,7 +226,7 @@ class AboutUsPage extends StatelessWidget {
               textDirection: TextDirection.rtl,
               style: const TextStyle(
                 fontSize: 16,
-                fontFamily: 'cairo',
+                fontFamily: 'Cairo', // تطبيق خط Cairo
                 height: 1.7,
               ),
             ),
@@ -259,16 +270,14 @@ class AboutUsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: titleRightPadding),
-              child: Text(
-                title,
-                textAlign: TextAlign.right,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF846043),
-                ),
+            Text(
+              title,
+              textAlign: TextAlign.right,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Cairo', // تطبيق خط Cairo
+                color: Color(0xFF846043),
               ),
             ),
             const SizedBox(height: 12),
@@ -279,7 +288,6 @@ class AboutUsPage extends StatelessWidget {
     );
   }
 
-  // الأدوات المستخدمة
   Widget _toolsCard() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -305,7 +313,6 @@ class AboutUsPage extends StatelessWidget {
 class _ToolImage extends StatelessWidget {
   final String imagePath;
   final String label;
-
   const _ToolImage({required this.imagePath, required this.label});
 
   @override
@@ -330,7 +337,13 @@ class _ToolImage extends StatelessWidget {
           child: Image.asset(imagePath, fit: BoxFit.contain),
         ),
         const SizedBox(height: 8),
-        Text(label, style: const TextStyle(fontSize: 14)),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 14,
+            fontFamily: 'Cairo', // تطبيق خط Cairo
+          ),
+        ),
       ],
     );
   }
@@ -338,7 +351,6 @@ class _ToolImage extends StatelessWidget {
 
 class NameTile extends StatelessWidget {
   const NameTile({super.key, required this.name, required this.index});
-
   final String name;
   final int index;
 
@@ -377,7 +389,7 @@ class NameTile extends StatelessWidget {
             const CircleAvatar(
               radius: 16,
               backgroundColor: Color(0xFFC49E61),
-              child: Icon(Icons.person, size: 18, color: Colors.black54),
+              child: Icon(Icons.person, size: 18, color: Colors.white),
             ),
             const SizedBox(width: 14),
             Expanded(
@@ -387,6 +399,7 @@ class NameTile extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
+                  fontFamily: 'Cairo', // تطبيق خط Cairo
                   color: Colors.black,
                 ),
               ),
